@@ -71,6 +71,20 @@ export default function App() {
       tech: ["React", "TypeScript", "Vite", "Supabase", "TanStack Query"],
       github: "https://github.com/awaisiftikharr/newsflux"
     }
+
+    {
+      title: "DevAtlas AI",
+      category: "Full-Stack Engineering Workspace",
+      icon: (
+        <svg className="w-5 h-5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5M8 17h3"/>
+        </svg>
+      ),
+      description: "A full-stack engineering knowledge workspace. Milestone 1 includes a Django REST API, React + TypeScript frontend, JWT registration and login, protected project CRUD, and Docker Compose foundations for PostgreSQL and Redis. Document ingestion, vector retrieval, and grounded RAG remain planned roadmap features.",
+      metrics: "Milestone 1 published · AI/RAG roadmap in progress",
+      tech: ["Python", "Django REST", "React", "TypeScript", "PostgreSQL", "Docker"],
+      github: "https://github.com/awaisiftikharr/DevAtlas-AI"
+    },
   ];
 
   return (
