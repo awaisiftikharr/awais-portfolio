@@ -89,6 +89,7 @@ export default function App() {
             <button onClick={() => scrollToSection('about')} className="hover:text-emerald-400 transition-colors">About</button>
             <button onClick={() => scrollToSection('skills')} className="hover:text-emerald-400 transition-colors">Skills</button>
             <button onClick={() => scrollToSection('projects')} className="hover:text-emerald-400 transition-colors">Projects</button>
+            <button onClick={() => scrollToSection('experience')} className="hover:text-emerald-400 transition-colors">Experience</button>
             <button onClick={() => scrollToSection('education')} className="hover:text-emerald-400 transition-colors">Education</button>
             <button onClick={() => scrollToSection('contact')} className="hover:text-emerald-400 transition-colors">Contact</button>
             <a 
@@ -118,6 +119,7 @@ export default function App() {
             <button onClick={() => scrollToSection('about')} className="block w-full text-left py-2 text-slate-400 hover:text-white">About</button>
             <button onClick={() => scrollToSection('skills')} className="block w-full text-left py-2 text-slate-400 hover:text-white">Skills</button>
             <button onClick={() => scrollToSection('projects')} className="block w-full text-left py-2 text-slate-400 hover:text-white">Projects</button>
+            <button onClick={() => scrollToSection('experience')} className="block w-full text-left py-2 text-slate-400 hover:text-white">Experience</button>
             <button onClick={() => scrollToSection('education')} className="block w-full text-left py-2 text-slate-400 hover:text-white">Education</button>
             <button onClick={() => scrollToSection('contact')} className="block w-full text-left py-2 text-slate-400 hover:text-white">Contact</button>
             <a 
@@ -233,6 +235,24 @@ export default function App() {
                 </div>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* Professional Experience */}
+        <section id="experience" className="space-y-8 scroll-mt-20">
+          <div className="border-l-4 border-emerald-500 pl-4">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Professional Experience</h2>
+            <p className="text-slate-400 text-sm mt-1">Practical experience in a remote software development environment.</p>
+          </div>
+          <div className="p-6 sm:p-8 rounded-xl border border-slate-800 bg-slate-900/20">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+              <div className="space-y-2">
+                <h3 className="text-lg font-bold text-white">Rhombix Technologies</h3>
+                <p className="text-sm text-emerald-400 font-medium">Remote Software Development Intern</p>
+                <p className="text-sm text-slate-400">Completed a three-month remote internship, gaining practical exposure to software development workflows and technical assignments.</p>
+              </div>
+              <span className="text-xs font-mono text-slate-400 whitespace-nowrap">July – September 2026</span>
+            </div>
           </div>
         </section>
 
