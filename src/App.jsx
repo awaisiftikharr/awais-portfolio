@@ -12,9 +12,10 @@ export default function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formData.name && formData.email && formData.message) {
+      const subject = encodeURIComponent(`Portfolio enquiry from ${formData.name}`);
+      const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`);
+      window.location.href = `mailto:awaisiftikhardev@gmail.com?subject=${subject}&body=${body}`;
       setFormSubmitted(true);
-      setFormData({ name: '', email: '', message: '' });
-      setTimeout(() => setFormSubmitted(false), 5000);
     }
   };
 
@@ -27,152 +28,48 @@ export default function App() {
   };
 
   const skills = {
-    languages: ['Python', 'Django', 'JavaScript', 'React.js', 'Tailwind CSS', 'C++', 'SQL', 'Git', 'GitHub']
+    languages: ['Python', 'JavaScript', 'TypeScript', 'React.js', 'Django', 'REST APIs', 'PostgreSQL', 'Supabase', 'Tailwind CSS', 'Git', 'GitHub']
   };
 
   const projects = [
     {
-      title: "ai-expense-tracker",
-      category: "Full-Stack & Machine Learning",
-      icon: (
-        <svg className="w-5 h-5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 15h3M1 9h3M1 15h3"/>
-        </svg>
-      ),
-      description: "A decoupled banking ecosystem utilizing a Django REST backend, React frontend, and a local Scikit-Learn NLP classifier for transaction categorization.",
-      metrics: "NLP Accuracy: 96.4% | API Latency: <120ms",
-      tech: ["Django", "React.js", "Scikit-Learn", "Tailwind CSS"],
-      github: "https://github.com/awaisiftikharr/ai-expense-tracker"
-    },
-    {
-      title: "Ecommerce-Website-with-Ai-Chatbot",
-      category: "Data-Driven Web Application",
-      icon: (
-        <svg className="w-5 h-5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>
-        </svg>
-      ),
-      description: "A production-grade e-commerce platform focusing on automated conversational assistance, intensive search index optimization, and trend adaptation.",
-      metrics: "Core Web Vitals: 98% | Click-Through Rate: +22%",
-      tech: ["Python", "Django", "React.js", "SQL"],
-      github: "https://github.com/awaisiftikharr/Ecommerce-Website-with-Ai-Chatbot"
-    },
-    {
-      title: "newsflux",
-      category: "Full-Stack Web App",
-      icon: (
-        <svg className="w-5 h-5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>
-        </svg>
-      ),
-      description: "A high-speed, modern news and blog aggregation architecture engineered with an integrated administrative dashboard panel.",
-      metrics: "SSR Page Load: 0.4s | SEO Score: 100%",
-      tech: ["Python", "Django", "React.js", "Tailwind CSS"],
-      github: "https://github.com/awaisiftikharr/newsflux"
-    },
-    {
-      title: "Weatherly-weather-app",
-      category: "Frontend Engineering",
-      icon: (
-        <svg className="w-5 h-5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
-        </svg>
-      ),
-      description: "A slick weather intelligence client displaying asynchronous data structures, background caching, and complex error-state skeleton placeholders.",
-      metrics: "Lighthouse Performance: 100% | Zero CLS Shifts",
-      tech: ["React.js", "Vite", "Third-Party APIs", "Tailwind CSS"],
-      github: "https://github.com/awaisiftikharr/Weatherly-weather-app"
-    },
-    {
-      title: "vigor-ai-lab",
-      category: "AI Infrastructure UI",
-      icon: (
-        <svg className="w-5 h-5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <polyline points="4 17 10 11 13 14 20 7"/><polyline points="14 7 20 7 20 13"/>
-        </svg>
-      ),
-      description: "A research-driven graphical hub tracking localized machine learning iteration models and automated continuous dataset evaluations.",
-      metrics: "Live Compute Efficiency: +35% Data Throughput",
-      tech: ["React.js", "Next.js", "Tailwind CSS", "Python"],
-      github: "https://github.com/awaisiftikharr/vigor-ai-lab"
-    },
-    {
-      title: "enterprise-multi-agent-workflow",
-      category: "Distributed AI Orchestration",
-      icon: (
-        <svg className="w-5 h-5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <line x1="6" x2="18" y1="3" y2="3"/><line x1="6" x2="18" y1="21" y2="21"/><line x1="6" x2="6" y1="3" y2="21"/><line x1="18" x2="18" y1="3" y2="21"/>
-        </svg>
-      ),
-      description: "An advanced state-management execution pipeline designed to direct concurrent autonomous agent processing loops seamlessly.",
-      metrics: "Concurrency Handling: Up to 50 active agents",
-      tech: ["Python", "Django", "JavaScript", "Tailwind CSS"],
-      github: "https://github.com/awaisiftikharr/enterprise-multi-agent-workflow"
-    },
-    {
       title: "Human-vs-Bot-Detection",
-      category: "Cybersecurity Analytics",
+      category: "Machine Learning Demo",
       icon: (
         <svg className="w-5 h-5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/>
         </svg>
       ),
-      description: "A real-time metrics platform tracking classification patterns to instantly block malicious automated platform requests.",
-      metrics: "False Positive Rate: <0.1% | Instant IP Ban",
-      tech: ["Python", "JavaScript", "SQL", "Tailwind CSS"],
+      description: "A Streamlit demonstration that classifies behavioural sessions using pointer distance, elapsed time and movement jitter with a scikit-learn model.",
+      metrics: "Demo classifier · evaluation script included",
+      tech: ["Python", "Scikit-learn", "Streamlit", "Pandas"],
       github: "https://github.com/awaisiftikharr/Human-vs-Bot-Detection"
     },
     {
-      title: "skillswapai-frontend",
-      category: "Marketplace UI",
+      title: "SmartFinds E-Commerce",
+      category: "Django Web Application",
       icon: (
         <svg className="w-5 h-5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="11" cy="11" r="8"/><line x1="21" x2="16.65" y1="21" y2="16.65"/>
+          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>
         </svg>
       ),
-      description: "A highly responsive skill-sharing matching client implementing optimal global state distribution profiles and multi-tier filtering logic.",
-      metrics: "Interaction Latency: Under 45ms across states",
-      tech: ["React.js", "Next.js", "Tailwind CSS", "JavaScript"],
-      github: "https://github.com/awaisiftikharr/skillswapai-frontend"
+      description: "A Django e-commerce application with product browsing, cart and checkout demonstrations, a rule-based product chatbot and TF-IDF content-based recommendations.",
+      metrics: "Reusable product recommendation service",
+      tech: ["Python", "Django", "SQLite", "Scikit-learn"],
+      github: "https://github.com/awaisiftikharr/Ecommerce-Website-with-Ai-Chatbot"
     },
     {
-      title: "glowupbeaut",
-      category: "E-Commerce Client Interface",
+      title: "NewsFlux",
+      category: "React & Supabase Application",
       icon: (
         <svg className="w-5 h-5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="m12 3-1.912 5.886H3.894l5.018 3.646L6.999 18.42 12 14.775l5.001 3.645-1.913-5.888 5.019-3.646h-6.194Z"/>
+          <circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>
         </svg>
       ),
-      description: "An elegant, polished, conversion-oriented layout tailored perfectly for tracking media asset display metrics and customer funnels.",
-      metrics: "Conversion Boost: +18% on Visual Engagements",
-      tech: ["React.js", "Tailwind CSS", "Vite", "JavaScript"],
-      github: "https://github.com/awaisiftikharr/glowupbeaut"
-    },
-    {
-      title: "SubBox-App",
-      category: "SaaS Dashboard Systems",
-      icon: (
-        <svg className="w-5 h-5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/>
-        </svg>
-      ),
-      description: "A clean dashboard tracker running live transactional subscription monitoring equations and interactive metric analytics.",
-      metrics: "Billing Event Error Tracking: 0% Data Discrepancy",
-      tech: ["React.js", "Tailwind CSS", "JavaScript", "SQL"],
-      github: "https://github.com/awaisiftikharr/SubBox-App"
-    },
-    {
-      title: "tanstack-template & awaisiftikhar.github.io",
-      category: "Developer Core Architecture",
-      icon: (
-        <svg className="w-5 h-5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
-        </svg>
-      ),
-      description: "A blazing fast, performance-optimized template foundation utilizing highly structured routing arrays and server-side friendly rendering layers.",
-      metrics: "Initial Bundle Size: <45kb | Pure SEO Target",
-      tech: ["React.js", "Vite", "Tailwind CSS", "JavaScript"],
-      github: "https://github.com/awaisiftikharr/tanstack-template"
+      description: "A multi-page news application with article and category routes, Supabase data access, and TanStack Query data-fetching workflows.",
+      metrics: "Article, category and live-update data flows",
+      tech: ["React", "TypeScript", "Vite", "Supabase", "TanStack Query"],
+      github: "https://github.com/awaisiftikharr/newsflux"
     }
   ];
 
@@ -195,7 +92,7 @@ export default function App() {
             <button onClick={() => scrollToSection('education')} className="hover:text-emerald-400 transition-colors">Education</button>
             <button onClick={() => scrollToSection('contact')} className="hover:text-emerald-400 transition-colors">Contact</button>
             <a 
-              href="https://drive.google.com/file/d/1HvfL3VyOWtCDljNU4M1szyRY2YfrkC4Z/view?usp=drive_link" 
+              href="mailto:awaisiftikhardev@gmail.com?subject=CV%20Request" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-semibold transition-all duration-200"
@@ -242,7 +139,7 @@ export default function App() {
         <section id="about" className="pt-8 md:pt-16 max-w-4xl space-y-6">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/5 text-emerald-400 text-xs font-semibold tracking-wide uppercase">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            Available for Active Engineering Roles
+            Open to Junior Software Engineer and Full-Stack Developer Roles
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-none">
             Building Scalable, Robust <br className="hidden sm:inline" />
@@ -251,7 +148,7 @@ export default function App() {
             </span>
           </h1>
           <p className="text-lg sm:text-xl text-slate-400 leading-relaxed max-w-3xl">
-            Hi, I'm <strong className="text-white font-semibold">Awais Iftikhar</strong>. I am a specialized Full-Stack Web Developer and Computer Science graduate from the Islamia University of Bahawalpur. I engineer enterprise-grade backend APIs, write fluid components, and maximize production performance outputs.
+            Hi, I'm <strong className="text-white font-semibold">Awais Iftikhar</strong>. I am a Computer Science graduate from The Islamia University of Bahawalpur. I build web applications and explore backend development, data-driven features, and applied machine learning.
           </p>
           <div className="pt-4 flex flex-wrap gap-4">
             <button onClick={() => scrollToSection('projects')} className="px-6 py-3 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-bold transition-all duration-200 transform hover:scale-[1.02] shadow-lg shadow-emerald-500/10">
@@ -267,7 +164,7 @@ export default function App() {
         <section id="skills" className="space-y-8 scroll-mt-20">
           <div className="border-l-4 border-emerald-500 pl-4">
             <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Technical Core Competencies</h2>
-            <p className="text-slate-400 text-sm mt-1">A verified matrix of stacks and frameworks I comfortably execute production tasks with.</p>
+            <p className="text-slate-400 text-sm mt-1">Technologies used across my coursework and software projects.</p>
           </div>
           
           <div className="p-6 rounded-xl border border-slate-800 bg-slate-900/40">
@@ -283,7 +180,7 @@ export default function App() {
         <section id="projects" className="space-y-8 scroll-mt-20">
           <div className="border-l-4 border-emerald-500 pl-4">
             <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Project Showcase Portfolio</h2>
-            <p className="text-slate-400 text-sm mt-1">A direct, comprehensive mapping of all 11 repository environments sourced directly from production environments.</p>
+            <p className="text-slate-400 text-sm mt-1">Selected projects with source code and implementation notes.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -295,7 +192,7 @@ export default function App() {
                       {project.icon}
                     </div>
                     <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700/40">
-                      Active Code Base
+                      GitHub Repository
                     </span>
                   </div>
                   
@@ -349,11 +246,11 @@ export default function App() {
           <div className="p-6 sm:p-8 rounded-xl border border-slate-800 bg-slate-900/20 flex flex-col sm:flex-row justify-between gap-6 relative overflow-hidden">
             <div className="space-y-3 max-w-2xl">
               <span className="text-xs font-mono font-bold text-emerald-400 uppercase tracking-widest bg-emerald-500/5 px-2.5 py-1 rounded border border-emerald-500/10">
-                Graduated • June 2026
+                Graduated • July 2026
               </span>
               <h3 className="text-xl sm:text-2xl font-bold text-white">Bachelor of Science in Computer Science</h3>
               <p className="text-sm sm:text-base text-slate-300 font-medium">The Islamia University of Bahawalpur</p>
-              <p className="text-xs text-slate-400">Department of Computer Science</p>
+              <p className="text-xs text-slate-400">Department of Computer Science · CGPA: 3.25 / 4.00</p>
               <p className="text-xs sm:text-sm text-slate-400 leading-relaxed pt-2">
                 Rigorous focus across architectural logic layout parameters, algorithm validation arrays, data structures analysis, modern engineering stacks, and normalized enterprise database design architectures.
               </p>
@@ -376,9 +273,9 @@ export default function App() {
                 <h3 className="text-base font-bold text-white">Verified Contact Coordinates</h3>
                 
                 <div className="space-y-3 text-xs">
-                  <a href="mailto:awaisiftikhar10012@gmail.com" className="flex items-center gap-3 p-3 rounded-lg bg-slate-800/40 hover:bg-slate-800 text-slate-300 hover:text-emerald-400 border border-slate-700/30 transition-all">
+                  <a href="mailto:awaisiftikhardev@gmail.com" className="flex items-center gap-3 p-3 rounded-lg bg-slate-800/40 hover:bg-slate-800 text-slate-300 hover:text-emerald-400 border border-slate-700/30 transition-all">
                     <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                    <span className="truncate">awaisiftikhar10012@gmail.com</span>
+                    <span className="truncate">awaisiftikhardev@gmail.com</span>
                   </a>
                   
                   <a href="tel:+923049727530" className="flex items-center gap-3 p-3 rounded-lg bg-slate-800/40 hover:bg-slate-800 text-slate-300 hover:text-emerald-400 border border-slate-700/30 transition-all">
@@ -386,9 +283,9 @@ export default function App() {
                     <span>+92 304 9727530</span>
                   </a>
 
-                  <a href="https://www.linkedin.com/in/awais-iftikhar-01264b402" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-lg bg-slate-800/40 hover:bg-slate-800 text-slate-300 hover:text-emerald-400 border border-slate-700/30 transition-all">
+                  <a href="https://www.linkedin.com/in/awaisiftikhardev/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-lg bg-slate-800/40 hover:bg-slate-800 text-slate-300 hover:text-emerald-400 border border-slate-700/30 transition-all">
                     <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-                    <span className="truncate">linkedin.com/in/awais-iftikhar</span>
+                    <span className="truncate">linkedin.com/in/awaisiftikhardev</span>
                   </a>
 
                   <a href="https://github.com/awaisiftikharr" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-lg bg-slate-800/40 hover:bg-slate-800 text-slate-300 hover:text-emerald-400 border border-slate-700/30 transition-all">
@@ -404,7 +301,7 @@ export default function App() {
               <form onSubmit={handleSubmit} className="p-5 rounded-xl border border-slate-800 bg-slate-900/30 space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1">
-                    <label htmlFor="name" className="text-xs font-medium text-slate-400">Your Full Identity Name</label>
+                    <label htmlFor="name" className="text-xs font-medium text-slate-400">Your name</label>
                     <input 
                       type="text" id="name" name="name" required value={formData.name} onChange={handleInputChange}
                       className="w-full bg-slate-800/60 border border-slate-700/80 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-emerald-500 transition-colors" 
@@ -412,7 +309,7 @@ export default function App() {
                     />
                   </div>
                   <div className="space-y-1">
-                    <label htmlFor="email" className="text-xs font-medium text-slate-400">Corporate Email Address</label>
+                    <label htmlFor="email" className="text-xs font-medium text-slate-400">Email address</label>
                     <input 
                       type="email" id="email" name="email" required value={formData.email} onChange={handleInputChange}
                       className="w-full bg-slate-800/60 border border-slate-700/80 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-emerald-500 transition-colors" 
@@ -422,7 +319,7 @@ export default function App() {
                 </div>
                 
                 <div className="space-y-1">
-                  <label htmlFor="message" className="text-xs font-medium text-slate-400">Project Strategy or Role Scope Requirements</label>
+                  <label htmlFor="message" className="text-xs font-medium text-slate-400">Message</label>
                   <textarea 
                     id="message" name="message" rows="4" required value={formData.message} onChange={handleInputChange}
                     className="w-full bg-slate-800/60 border border-slate-700/80 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-emerald-500 transition-colors resize-none" 
@@ -441,7 +338,7 @@ export default function App() {
                 {formSubmitted && (
                   <div className="flex items-center gap-2 p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs">
                     <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                    <span>Inquiry processed. Communication channels will connect with you shortly.</span>
+                    <span>Your email application should open with this message ready to send.</span>
                   </div>
                 )}
               </form>
@@ -456,7 +353,7 @@ export default function App() {
       <footer className="mt-24 border-t border-slate-800/60 bg-slate-900/10 text-slate-500 text-xs py-8">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
-            © 2026 Awais Iftikhar. Optimized to run at scale.
+            © 2026 Awais Iftikhar. Built with React and Vite.
           </div>
           <div className="flex gap-6">
             <a href="#" onClick={(e) => e.preventDefault()} className="hover:text-slate-400 transition-colors">Privacy Infrastructure</a>
