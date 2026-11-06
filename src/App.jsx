@@ -97,7 +97,7 @@ export default function App() {
               rel="noopener noreferrer" 
               className="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-semibold transition-all duration-200"
             >
-              Download CV
+              Request CV
             </a>
           </nav>
 
@@ -121,12 +121,12 @@ export default function App() {
             <button onClick={() => scrollToSection('education')} className="block w-full text-left py-2 text-slate-400 hover:text-white">Education</button>
             <button onClick={() => scrollToSection('contact')} className="block w-full text-left py-2 text-slate-400 hover:text-white">Contact</button>
             <a 
-              href="https://drive.google.com/file/d/1HvfL3VyOWtCDljNU4M1szyRY2YfrkC4Z/view?usp=drive_link" 
+              href="mailto:awaisiftikhardev@gmail.com?subject=CV%20Request" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="block text-center w-full px-4 py-2.5 rounded-lg bg-emerald-500 text-slate-900 font-semibold"
             >
-              Download CV
+              Request CV
             </a>
           </div>
         )}
